@@ -44,39 +44,40 @@ function skybox(){
         return mat;
     }
     var cubeMaterials = [
-      // back side
+      // Aftur hlið
       loadMat(),
-      // front side
+      // Fram hlið
       loadMat(), 
-      // Top side
+      // Toppur
       loadMat(), 
-      // Bottom side
+      // Botn
       loadMat(), 
-      // right side
+      // Hægri hlið
       loadMat(), 
-      // left side
+      // Vinstri Hlið
       loadMat()
     ];
 
-    //add cube & materials
+    // Gerir skybox kubbinn
     var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
     var mesh = new THREE.Mesh(cube, cubeMaterial);
     scene.add(mesh);
 }
+// Listener fyrir minkun og stækkun
 document.addEventListener('keydown', function(event) {
     if(event.keyCode == 107) {
         // Numpad +
         cube.scale.x += 0.1;
         cube.scale.y += 0.1;
         cube.scale.z += 0.1;
-        renderer.render(scene, camera);
+        renderer.render(scene, camera);  // Kallar á renderinn svo kubburinn stækki a skjánum eftir breytingarnar
     }
     else if(event.keyCode == 109 && cube.scale.x > 0.2) {
         // Numpad -
         cube.scale.x -= 0.1;
         cube.scale.y -= 0.1;
         cube.scale.z -= 0.1;
-        renderer.render(scene, camera);
+        renderer.render(scene, camera);  // Kallar á renderinn svo kubburinn minnki a skjánum eftir breytingarnar
     }
 });
 
