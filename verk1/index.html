@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html onclick="HideBox()">
+    <head>
+        <title>v1</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.js"></script>
+        <div id="drawing"></div> 
+        <script>
+            // SVG notandi SVG.js version 2.7.1
+            var draw = SVG('drawing').size(100, 100)
+            var rect = draw.rect(100, 100).attr({ fill: '#f06' })
+            var cnt = 0;
+            
+            div = document.getElementById("drawing");
+            div.addEventListener("mouseenter", function(event){
+                console.log("mouseenter");
+                rect.animate(1700, '>', 20).attr({fill: '#42b3f4'});
+            });
+            div.addEventListener("mouseleave", function(event){
+                console.log("mouseleaver");
+                rect.animate(1700, '>', 20).attr({fill: '#f06'});
+            });
+
+            function HideBox(){
+                // Gerir kassann hvítann eins og bakgrunnurinn
+                if(cnt %= 2){
+                    rect.animate(1700, '>', 20).attr({ fill: '#f06' })
+                }else{
+                    rect.animate(1700, '<', 200).attr({ fill: '#fff' })
+                }
+                cnt++;
+            }
+        </script>
+    </body>
+</html>
